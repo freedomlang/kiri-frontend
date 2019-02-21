@@ -1,0 +1,45 @@
+.article-list-item {
+    text-align: left;
+}
+
+.article-list-item .article-title {
+    line-height: 35px;
+    margin: 0;
+    padding: 0 0 0 1.6rem;
+    border-left: .4rem solid #00a3cf;
+    font-size: 2rem;
+}
+
+.article-list-item .article-title .article-title-url {
+    color: #444;
+}
+
+.article-list-item {
+    padding: 15px 0 20px;
+    border-bottom: 1px solid #eee;
+    
+    .article-meta {
+        color: #999;
+        line-height: 35px;
+        list-style: none;
+        padding: 0 0 0 1.6rem;
+        border-left: .4rem solid #ccc;
+        font-size: 1.2rem;
+        .article-meta-item {
+            display: inline-block;
+
+            &:nth-child(2) {
+                &::before {
+                    margin: 0 .5rem;
+                    color: #ccc;
+                    content: "/";
+                }
+            }
+        }
+    }
+
+    .article-summary {
+        font-size: 1.5rem;
+        line-height: 1.58;
+    }
+}

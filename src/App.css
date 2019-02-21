@@ -1,5 +1,12 @@
+#root {
+  min-height: 100%;
+  position: relative;
+  padding-bottom: 5rem;
+}
+
 .App {
   text-align: center;
+  min-height: 100%;
 }
 
 .App-logo {
@@ -18,10 +25,6 @@
   color: white;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
 @keyframes App-logo-spin {
   from {
     transform: rotate(0deg);
@@ -29,4 +32,12 @@
   to {
     transform: rotate(360deg);
   }
+}
+
+.text-left {
+  text-align: left;
+}
+
+.inheritColor {
+  color: inherit;
 }
