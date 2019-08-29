@@ -42,4 +42,8 @@
         font-size: 1.5rem;
         line-height: 1.58;
     }
+
+    &:last-child {
+        border-bottom: none;
+    }
 }

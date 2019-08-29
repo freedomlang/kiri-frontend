@@ -15,7 +15,8 @@ export default class Footer extends Component {
     //   );
     return (
         <footer id="footer" role="contentinfo">
-            © 2015-{currentYear} Life and love
+            © Blackie's Blog 2015 - {currentYear}<br/>
+            Designed and developed by Blackie Wu
         </footer>
     )
   }

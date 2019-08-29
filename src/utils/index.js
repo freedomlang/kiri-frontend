@@ -8,8 +8,8 @@ const mapLanguage = {
 
 var $http = axios.create({
   baseURL:
-    window.location.port !== "80" ? "http://localhost:3002/api/" : "/api/", //  基础Api接口地址
-  timeout: 5000
+  window.location.hostname === "localhost" ? "http://localhost:9999/api/" : "/api/", //  基础Api接口地址
+  timeout: 9000
 });
 
 $http.interceptors.response.use(

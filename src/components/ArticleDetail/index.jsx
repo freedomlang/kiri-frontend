@@ -20,7 +20,7 @@ export default class ArticleDetail extends Component {
   });
 
   getArticleDetail = () => {
-    $http.get(`article/${this.props.match.params.id}`).then(data => {
+    $http.get(`articles/${this.props.match.params.id}`).then(data => {
       if (data) {
         this.setState({
           article: data
@@ -36,46 +36,39 @@ export default class ArticleDetail extends Component {
   };
 
   render() {
-    const { title = " " } = this.state.article;
+    const { title = "", modified, tags = [], category } = this.state.article;
+    const el4tags = tags.map((tag, index) => (
+      <li className="article-meta-item" key={index}>
+        <a className="article-meta-item-tag" href="https://blog.freedomlang.com/tag/VPS/">{tag}</a>
+      </li>
+    ))
     return (
       <div className="container-fluid">
         <div className="row">
           <div className="col-xl-2" />
-          <section className="col-xl-7">
-            <Skeleton loading={this.state.loading} paragraph={{ rows: 4 }}>
+          <section className="col-xl-8">
+            <Skeleton active={true} loading={this.state.loading} paragraph={{ rows: 6 }}>
               <article
                 className="article-detail"
-                itemscope=""
-                itemtype="http://schema.org/BlogPosting"
               >
-                <h1 className="article-title" itemprop="name headline">
+                <h1 className="article-title" >
                   {title}
                 </h1>
                 <ul className="article-meta">
                   <li className="article-meta-item">
-                    <time
-                      datetime="2019-01-15T22:36:25+00:00"
-                      itemprop="datePublished"
-                    >
-                      January 15, 2019
-                    </time>
+                    <time>{modified}</time>
                   </li>
-                  <li className="article-meta-item">
+                  {category ? <li className="article-meta-item">
                     分类:{" "}
                     <a
                       className="inheritColor"
                       href="https://blog.freedomlang.com/category/Linux/"
-                    >
-                      Linux
-                    </a>
-                  </li>
-                  <li className="article-meta-item">
-                    <a className="article-meta-item-tag" href="https://blog.freedomlang.com/tag/VPS/">VPS</a>
-                  </li>
+                    >{category}</a>
+                  </li> : null}
+                  {el4tags}
                 </ul>
                 <div
                   className="article-content"
-                  itemprop="articleBody"
                   dangerouslySetInnerHTML={this.parseMarkdown()}
                 />
               </article>

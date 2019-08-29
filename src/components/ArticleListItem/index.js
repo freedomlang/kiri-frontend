@@ -14,24 +14,21 @@ export default class ArticleListItem extends Component {
   parse2date = (dateTime) => dayjs(dateTime).format('YYYY年M月DD日');
 
   render() {
-    const { articleTitle, modifiedTime, id } = this.props;
-    console.log(this.props.articleSummary)
-    console.log(this.parseMarkdown())
-    console.log(this)
+    const { articleTitle, modifiedTime, category, id } = this.props;
     return (
       <article
         className="article-list-item"
       >
-        <h2 className="article-title" itemprop="name headline">
+        <h2 className="article-title" >
           <Link className="article-title-url" to={`/article/${id}`}>{articleTitle}</Link>
           {/* <a className="article-title-url" href="https://blog.freedomlang.com/1398.html">{articleTitle}</a> */}
         </h2>
         <ul className="article-meta">
           <li className="article-meta-item">
-            <a className="inheritColor" href="https://blog.freedomlang.com/category/Linux/">Linux</a>
+            <a className="inheritColor" href="https://blog.freedomlang.com/category/Linux/">{category}</a>
           </li>
           <li className="article-meta-item">
-            <time datetime={ modifiedTime } itemprop="dateModified">
+            <time >
               { this.parse2date(modifiedTime) }
             </time>
           </li>

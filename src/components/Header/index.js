@@ -1,6 +1,9 @@
 // @flow
 
 import React, { Component } from 'react';
+import {
+  Link
+} from 'react-router-dom';
 import logo from 'images/logo.svg';
 import './style.scss';
 
@@ -35,13 +38,13 @@ class Header extends Component {
         <div className="container-fluid">
           <div className="row align-items-center">
             <div className="col-xl-2 text-left">
-              <a href="/">
+              <Link to="/">
                 <img alt="logo" src={logo} className="logo"/>
-              </a>
+              </Link>
             </div>
             <div className="col-xl-7">
               <nav>
-                <a href="https://blog.freedomlang.com/105.html" className="nav-item">留言板</a>
+                <Link to="/" className="nav-item" style={{textDecoration: 'line-through'}}>留言板</Link>
                 <a href="#/" onClick={this.toggleSearchPanel} className="nav-item">
                   <i className="fa fa-search"></i>
                 </a>

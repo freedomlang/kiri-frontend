@@ -12,17 +12,20 @@ export default class ArticleList extends Component {
   }
 
   getArticles = () => {
-    $http.post('getArticles', {
-      pageNum: 1,
-      pageSize: 10
+    $http.get('articles', {
+      params: {
+        pageNum: 1,
+        pageSize: 10
+      }
     }).then((response) => {
       this.setState({
-        articles: response.data.map(({ title: articleTitle, text: articleSummary, _id: key, modified: modifiedTime }) => ({
+        articles: response.data.map(({ title: articleTitle, text: articleSummary, _id: key, modified: modifiedTime, category }) => ({
           id: key,
           key,
           modifiedTime,
           articleTitle,
-          articleSummary
+          articleSummary,
+          category
         }))
       })
     })
@@ -34,10 +37,10 @@ export default class ArticleList extends Component {
       <div className="container-fluid">
         <div className="row">
           <div className="col-xl-2"></div>
-          <section className="col-xl-7">
+          <section className="col-xl-8">
             {articles.map((perArticle) => <ArticleListItem {...perArticle} />)}
           </section>
-          <div className="col-xl-3"></div>  
+          <div className="col-xl-2"></div>  
         </div>
       </div>
     )
