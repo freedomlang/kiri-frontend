@@ -5,7 +5,7 @@
 - [ ] Add particles background
 - [ ] Add comment page
 - [ ] Add about page
-- [ ] Add 404 page
+- [x] Add 404 page
 
 ## License
 
