@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Header from './components/Header';
 import Footer from './components/Footer';
+import ParticleBackground from './components/ParticleBackground';
 import ArticleList from './components/ArticleList';
 import ArticleDetail from './components/ArticleDetail';
 import NotFoundPage from './pages/404'
@@ -20,6 +21,7 @@ class App extends Component {
         <div className="App">
           <Header />
 
+          <ParticleBackground />
           <Switch>
             <Route exact path="/" component={ArticleList} />
             <Route exact path="/article/:id" component={ArticleDetail} />
