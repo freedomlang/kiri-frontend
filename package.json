@@ -11,7 +11,6 @@
   "bugs": {
     "url": "https://github.com/freedomlang/kiri-frontend/issues"
   },
-  "homepage": "https://github.com/freedomlang/kiri-frontend",
   "dependencies": {
     "@babel/core": "^7.1.6",
     "@svgr/webpack": "2.4.1",
