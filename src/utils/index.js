@@ -9,7 +9,7 @@ const mapLanguage = {
 var $http = axios.create({
   baseURL:
   window.location.hostname === "localhost" ? "http://localhost:9999/api/" : "/api/", //  基础Api接口地址
-  timeout: 9000
+  timeout: 19000
 });
 
 $http.interceptors.response.use(
@@ -35,6 +35,15 @@ $http.interceptors.response.use(
     return Promise.reject(errorText);
   }
 );
+
+// From https://github.com/showdownjs/showdown/issues/337#issuecomment-277355686
+showdown.extension('targetlink', function() {
+  return [{
+    type: 'html',
+    regex: /(<a [^>]+?)(>.*<\/a>)/g,
+    replace: '$1 target="_blank"$2'
+  }];
+});
 
 showdown.extension("highlight", function() {
   return [
@@ -67,7 +76,7 @@ showdown.extension("highlight", function() {
   ];
 });
 
-const converter = new showdown.Converter({ extensions: ['highlight'] })
+const converter = new showdown.Converter({ extensions: ['highlight', 'targetlink'] })
 
 export {
   converter,
