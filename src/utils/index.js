@@ -45,6 +45,14 @@ showdown.extension('targetlink', function() {
   }];
 });
 
+showdown.extension('addClass2img', function() {
+  return [{
+    type: 'html',
+    regex: /(<img [^>]+?)(>.*<\/a>)/g,
+    replace: '$1 class="markdown-img"$2'
+  }];
+});
+
 showdown.extension("highlight", function() {
   return [
     {
@@ -76,7 +84,7 @@ showdown.extension("highlight", function() {
   ];
 });
 
-const converter = new showdown.Converter({ extensions: ['highlight', 'targetlink'] })
+const converter = new showdown.Converter({ extensions: ['highlight', 'targetlink', 'addClass2img'] })
 
 export {
   converter,
