@@ -48,7 +48,7 @@ showdown.extension('targetlink', function() {
 showdown.extension('addClass2img', function() {
   return [{
     type: 'html',
-    regex: /(<img [^>]+?)(>.*<\/a>)/g,
+    regex: /(<img [^>]+?)(>)/g,
     replace: '$1 class="markdown-img"$2'
   }];
 });
