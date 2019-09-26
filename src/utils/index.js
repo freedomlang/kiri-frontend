@@ -84,7 +84,18 @@ showdown.extension("highlight", function() {
   ];
 });
 
-const converter = new showdown.Converter({ extensions: ['highlight', 'targetlink', 'addClass2img'] })
+showdown.extension('addClass2table', function() {
+  return [{
+    type: 'html',
+    regex: /(<table)(>)/g,
+    replace: '$1 class="table table-bordered table-hover"$2'
+  }];
+});
+
+const converter = new showdown.Converter({
+  tables: true,
+  extensions: ['highlight', 'targetlink', 'addClass2img', 'addClass2table']
+});
 
 export {
   converter,
