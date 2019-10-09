@@ -2,6 +2,15 @@ import { message } from "antd";
 import showdown from "showdown";
 import axios from "axios";
 
+function htmlunencode(text) {
+  return (
+    text
+      .replace(/&amp;/g, '&')
+      .replace(/&lt;/g, '<')
+      .replace(/&gt;/g, '>')
+    );
+}
+
 const mapLanguage = {
   zsh: 'bash'
 }
@@ -66,8 +75,9 @@ showdown.extension("highlight", function() {
           left = left.slice(0, 18) + "hljs " + left.slice(18);
           left = left.slice(0, 4) + ` alt="${lang}"` + left.slice(4);
           if (lang) lang = mapLanguage[lang] || lang;
+          match = htmlunencode(match);
           if (lang && window.hljs.getLanguage(lang)) {
-            return left + window.hljs.highlight(lang, match).value + right;
+            return left + window.hljs.highlight(lang, match, true).value + right;
           } else {
             return left + window.hljs.highlightAuto(match).value + right;
           }
