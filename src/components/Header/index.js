@@ -45,6 +45,7 @@ class Header extends Component {
             <div className="col-xl-7">
               <nav>
                 <Link to="/" className="nav-item" style={{textDecoration: 'line-through'}}>留言板</Link>
+                <Link to="/about" className="nav-item" >关于</Link>
                 <a href="#/" onClick={this.toggleSearchPanel} className="nav-item">
                   <i className="fa fa-search"></i>
                 </a>
