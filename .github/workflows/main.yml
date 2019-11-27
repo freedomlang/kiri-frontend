@@ -8,5 +8,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
+    - name: Checkout
+      uses: actions/checkout@master
+      
     - name: Run ESLint
       uses: stefanoeb/eslint-action@master
