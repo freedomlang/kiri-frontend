@@ -1,0 +1,12 @@
+name: Lint
+on: [push]
+
+jobs:
+
+  lint:
+    name: Lint
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Run ESLint
+      uses: stefanoeb/eslint-action@master
