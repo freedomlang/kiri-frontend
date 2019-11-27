@@ -5,6 +5,7 @@ import ParticleBackground from './components/ParticleBackground';
 import ArticleList from './components/ArticleList';
 import ArticleDetail from './components/ArticleDetail';
 import NotFoundPage from './pages/404'
+import About from './pages/About'
 import {
   HashRouter as Router,
   Route,
@@ -25,6 +26,7 @@ class App extends Component {
           <Switch>
             <Route exact path="/" component={ArticleList} />
             <Route exact path="/article/:id" component={ArticleDetail} />
+            <Route exact path="/about" component={About} />
             <Route exact path="/404" component={NotFoundPage} />
             <Redirect to="/404" />
           </Switch>

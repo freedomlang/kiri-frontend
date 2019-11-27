@@ -4,8 +4,9 @@
 - [ ] Add search page
 - [x] Add particles background
 - [ ] Add comment page
-- [ ] Add about page
+- [x] Add about page
 - [x] Add 404 page
+- [ ] Add TypeScript
 
 ## License
 
