@@ -9,14 +9,16 @@ jobs:
     
     strategy:
       matrix:
-        node-version: [8.x, 10.x, 12.x]
+        node-version: [10.x]
 
     steps:
     - name: Checkout
       uses: actions/checkout@master
-      
-    - name: Run ESLint
-      uses: stefanoeb/eslint-action@master
+    - uses: actions/setup-node@v1
       with:
-        node-version: ${{ matrix.node-version }}
-        args: "src/**.js"
+        node-version: '10.x'
+    - name: Install packages
+      run: npm install
+    
+    - name: Run ESLint
+      run: ./node_modules/.bin/eslint src
