@@ -71,16 +71,17 @@ showdown.extension("highlight", function() {
           right = "</code></pre>",
           flags = "g";
         var replacement = function(wholeMatch, match, left, right) {
-          var lang = (left.match(/class=\"([^ \"]+)/) || [])[1];
-          left = left.slice(0, 18) + "hljs " + left.slice(18);
-          left = left.slice(0, 4) + ` alt="${lang}"` + left.slice(4);
-          if (lang) lang = mapLanguage[lang] || lang;
           match = htmlunencode(match);
-          if (lang && window.hljs.getLanguage(lang)) {
-            return left + window.hljs.highlight(lang, match, true).value + right;
-          } else {
-            return left + window.hljs.highlightAuto(match).value + right;
+          let lang = (left.match(/class=\"([^ \"]+)/) || [])[1];
+          if (left.indexOf('class') === -1) left = left.slice(0, 10) + ' class=""' + left.slice(-1);
+          left = left.slice(0, 18) + "hljs " + left.slice(18);
+          if (lang) {
+            lang = mapLanguage[lang] || lang;
+            left = left.slice(0, 4) + ` alt="${lang}"` + left.slice(4);
+            if (window.hljs.getLanguage(lang)) return left + window.hljs.highlight(lang, match, true).value + right; 
           }
+          
+          return left + window.hljs.highlightAuto(match).value + right;
         };
         return showdown.helper.replaceRecursiveRegExp(
           text,
