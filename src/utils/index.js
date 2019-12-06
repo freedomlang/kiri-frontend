@@ -72,7 +72,7 @@ showdown.extension("highlight", function() {
           flags = "g";
         var replacement = function(wholeMatch, match, left, right) {
           match = htmlunencode(match);
-          let lang = (left.match(/class=\"([^ \"]+)/) || [])[1];
+          let lang = (left.match(/class="([^ "]+)/) || [])[1];
           if (left.indexOf('class') === -1) left = left.slice(0, 10) + ' class=""' + left.slice(-1);
           left = left.slice(0, 18) + "hljs " + left.slice(18);
           if (lang) {

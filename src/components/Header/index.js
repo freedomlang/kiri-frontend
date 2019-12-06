@@ -82,6 +82,7 @@ class Header extends Component {
               <nav>
                 <Link to="/" className="nav-item" style={{textDecoration: 'line-through'}}>留言板</Link>
                 <Link to="/about" className="nav-item" >关于</Link>
+                {/* eslint-disable-next-line jsx-a11y/anchor-is-valid, no-script-url */}
                 <a href="javascript:;" onClick={this.toggleSearchPanel} className="nav-item">
                   <i className="fa fa-search"></i>
                 </a>
