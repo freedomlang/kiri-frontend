@@ -1,7 +1,7 @@
 ### Todos
 - [ ] Add PWA support
 - [ ] Show comments in the page of article
-- [ ] Add search page
+- [x] Add search page
 - [x] Add particles background
 - [ ] Add comment page
 - [x] Add about page

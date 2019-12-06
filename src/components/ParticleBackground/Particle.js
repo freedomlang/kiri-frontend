@@ -1,10 +1,3 @@
-
-var __bind = function(fn, me) {
-    return function() {
-        return fn.apply(me, arguments)
-    }
-};
-
 const hslaStr = ({ h, s, l, a}) => {
     return `hsla(${h},${s}%,${l}%,${a})`;
 }

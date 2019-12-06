@@ -13,6 +13,12 @@ export default class ArticleDetail extends Component {
     this.getArticleDetail();
   };
 
+  componentDidUpdate(prevProps) {
+    if (prevProps.match.params.id !== this.props.match.params.id && this.props.match.params.id) {
+      return this.getArticleDetail();
+    }
+  }
+
   parseMarkdown = () => ({
     __html: this.state.article.text
       ? converter.makeHtml(this.state.article.text)

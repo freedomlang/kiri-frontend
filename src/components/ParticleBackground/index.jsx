@@ -74,7 +74,7 @@ export default class ParticleBackground extends Component {
       var n = numArr.length;
       var c = [];
       var inner = function(start, choose_) {
-          if (choose_ == 0) {
+          if (choose_ === 0) {
               callback(c)
           } else {
               for (var i = start; i <= n - choose_; ++i) {
