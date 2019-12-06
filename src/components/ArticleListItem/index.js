@@ -21,7 +21,6 @@ export default class ArticleListItem extends Component {
       >
         <h2 className="article-title" >
           <Link className="article-title-url" to={`/article/${id}`}>{articleTitle}</Link>
-          {/* <a className="article-title-url" href="https://blog.freedomlang.com/1398.html">{articleTitle}</a> */}
         </h2>
         <ul className="article-meta">
           <li className="article-meta-item">

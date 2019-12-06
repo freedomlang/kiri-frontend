@@ -24,27 +24,32 @@ header {
 }
 
 header .search {
-    display: flex;
-    align-items: center;
     justify-content:center;
+    padding: 3em 8em 0;
     width: 100%;
     color: #1b98e0;
     top: -100%;
-    background: #fff;
+    background: rgba(255, 255, 255, .95);
     z-index: 99999;
-    opacity: .95;
     position: fixed;
     transition: all .3s;
     height: 100%;
     font-size: 2.8rem;
+
+    .matchResults {
+        text-align: left;
+        font-size: 0.65em;
+    }
+
+    .matchedArticle {
+        width: 50%;
+        margin: 0;
+        padding: 0 1.25em;
+    }
 }
 
 header .search.active {
     top: 0;
-}
-
-header .search .placeholder4search {
-    margin-top: 0;
 }
 
 #search {
@@ -55,6 +60,11 @@ header .search .placeholder4search {
     display: block;
     border: 0;
     text-align: center;
+    width: 100%;
+
+    &::-webkit-input-placeholder {
+        color: inherit;
+    }
 }
 
 header .closePanel {
