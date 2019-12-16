@@ -14,6 +14,7 @@ class Header extends Component {
     super(props);
     this.state = {
       showSearch: false,
+      notFound: false,
       searchText: '',
       matchedArticles: []
     };
@@ -45,6 +46,7 @@ class Header extends Component {
   searchArticles = (event) => {
     event.preventDefault();;
     const { searchText } = this.state;
+    this.setState({ notFound: false })
     return $http.get('articles', {
       params:{
         pageNum: 1,
@@ -52,16 +54,13 @@ class Header extends Component {
         text: searchText
       }
     }).then(response => {
-      const { data } = response;
+      const { data: matchedArticles } = response;
       this.setState({
-        matchedArticles: data.map(function (perData){
-          // perData.articleLink = '//' + hostName + '/#/article/' + perData._id;
-
-          return perData;
-        })
+        notFound: matchedArticles.length === 0,
+        matchedArticles
       });
 
-      console.log(groupBy(data, 'category'))
+      console.log(groupBy(matchedArticles, 'category'))
     });
   }
 
@@ -101,6 +100,7 @@ class Header extends Component {
                 onChange={(event) => this.handelInput(event) }
                 />
             </form>
+            { this.state.notFound ? <p className="notFound">没找到相关文章</p> : null}
             <ul className="list-inline matchResults">{
               this.state.matchedArticles.map(({_id, title, modified}) => (
                 <li className="matchedArticle list-inline-item" key={_id}>
