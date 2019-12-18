@@ -64,6 +64,20 @@ class Header extends Component {
     });
   }
 
+  handleHotKey = event => {
+    if (event.keyCode === 27 && this.state.showSearch) {
+      this.toggleSearchPanel();
+    }
+  }
+
+  componentDidMount () {
+    window.addEventListener('keydown', this.handleHotKey);
+  }
+
+  componentWillUnmount () {
+    window.removeEventListener('keydown', this.handleHotKey);
+  }
+
   render() {
     const className4searcPanel = this.state.showSearch ? 'search active' : 'search';
     const { searchText } = this.state;
