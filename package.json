@@ -12,7 +12,7 @@
     "url": "https://github.com/freedomlang/kiri-frontend/issues"
   },
   "dependencies": {
-    "@babel/core": "^7.7.5",
+    "@babel/core": "^7.7.7",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.13.1",
     "axios": "^0.18.1",
