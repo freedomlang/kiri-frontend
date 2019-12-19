@@ -136,7 +136,7 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.11.0",
-    "babel-plugin-named-asset-import": "^0.3.4",
+    "babel-plugin-named-asset-import": "^0.3.5",
     "chalk": "^3.0.0",
     "dotenv-expand": "^5.1.0",
     "eslint-loader": "^3.0.2",
