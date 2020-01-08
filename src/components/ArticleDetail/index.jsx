@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Skeleton } from "antd";
-import { $http, converter } from "../../utils";
+import { $http, converter, marked } from "../../utils";
 import "./style.scss";
 
 export default class ArticleDetail extends Component {
@@ -21,7 +21,7 @@ export default class ArticleDetail extends Component {
 
   parseMarkdown = () => ({
     __html: this.state.article.text
-      ? converter.makeHtml(this.state.article.text)
+      ? marked(this.state.article.text)
       : ""
   });
 
