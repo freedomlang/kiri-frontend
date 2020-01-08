@@ -1,0 +1,1 @@
+export { default as CloseCircleFill } from '@ant-design/icons/lib/fill/CloseCircleFill.js'
