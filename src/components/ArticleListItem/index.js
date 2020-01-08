@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { converter } from "../../utils";
+import { marked } from "../../utils";
 import dayjs from 'dayjs';
 import {
   Link
@@ -8,7 +8,7 @@ import './style.scss'
 
 export default class ArticleListItem extends Component {
   parseMarkdown = () => ({
-    __html: this.props.articleSummary ? converter.makeHtml(this.props.articleSummary) : ''
+    __html: this.props.articleSummary ? marked(this.props.articleSummary) : ''
   })
 
   parse2date = (dateTime) => dayjs(dateTime).format('YYYY年M月DD日');
