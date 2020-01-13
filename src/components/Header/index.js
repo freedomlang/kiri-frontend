@@ -4,6 +4,7 @@ import React, { Component } from 'react';
 import {
   Link
 } from 'react-router-dom';
+import SearchPanel from '../SearchPanel'
 import groupBy from 'lodash.groupby';
 import { $http } from '../../utils';
 import logo from 'images/logo.svg';
@@ -25,10 +26,6 @@ class Header extends Component {
   toggleSearchPanel= () => {
     this.setState({
       showSearch: !this.state.showSearch
-    }, () => {
-      if (this.state.showSearch) {
-        this._input.focus();
-      }
     });
 
     window.setTimeout(() => this.setState({
@@ -79,9 +76,6 @@ class Header extends Component {
   }
 
   render() {
-    const className4searcPanel = this.state.showSearch ? 'search active' : 'search';
-    const { searchText } = this.state;
-
     return (
       <header>
         <div className="container-fluid">
@@ -96,37 +90,15 @@ class Header extends Component {
                 <Link to="/" className="nav-item" style={{textDecoration: 'line-through'}}>留言板</Link>
                 <Link to="/about" className="nav-item" >关于</Link>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid, no-script-url */}
-                <a href="javascript:;" onClick={this.toggleSearchPanel} className="nav-item">
+                <button type="button" onClick={this.toggleSearchPanel} className="btn-transparent nav-item">
                   <i className="fa fa-search"></i>
-                </a>
+                </button>
               </nav>
             </div>
             <div className="col-xl-3"></div>
           </div>
         </div>
-        <div className={className4searcPanel}>
-            <form className="table-center" onSubmit={this.searchArticles}>
-              <input type="text" id="search"
-                autoFocus={true}
-                ref={el => (this._input = el)}
-                placeholder="搜索"
-                value={searchText}
-                onChange={(event) => this.handelInput(event) }
-                />
-            </form>
-            { this.state.notFound ? <p className="notFound">没找到相关文章</p> : null}
-            <ul className="list-inline matchResults">{
-              this.state.matchedArticles.map(({_id, title, modified}) => (
-                <li className="matchedArticle list-inline-item" key={_id}>
-                  <time className="color-gray font-14">{modified}</time>
-                  <p className="text-truncate">
-                    <Link to={`/article/${_id}`} onClick={this.toggleSearchPanel} >{title}</Link>
-                  </p>
-                </li>
-              ))
-            }</ul>
-          <label className="closePanel" onClick={this.toggleSearchPanel}></label>
-        </div>
+        <SearchPanel toggleSearchPanel={this.toggleSearchPanel} visible={this.state.showSearch}/>
       </header>
     );
   }
