@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import { Skeleton } from "antd";
+import { Link } from "react-router-dom";
 import { $http, marked } from "../../utils";
 import "./style.scss";
 
@@ -66,10 +67,10 @@ export default class ArticleDetail extends Component {
                   </li>
                   {category ? <li className="article-meta-item">
                     分类:{" "}
-                    <a
+                    <Link
                       className="inheritColor"
-                      href="https://blog.freedomlang.com/category/Linux/"
-                    >{category}</a>
+                      to={`/category/${category}`}
+                    >{category}</Link>
                   </li> : null}
                   {el4tags}
                 </ul>

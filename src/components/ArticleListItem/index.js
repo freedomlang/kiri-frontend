@@ -22,12 +22,12 @@ export default class ArticleListItem extends Component {
         </h2>
         <ul className="article-meta">
           <li className="article-meta-item">
-            <a
+            <Link
               className="inheritColor"
-              href="https://blog.freedomlang.com/category/Linux/"
+              to={`/category/${category}`}
             >
               {category}
-            </a>
+            </Link>
           </li>
           <li className="article-meta-item">
             <time>{this.parse2date(modifiedTime)}</time>

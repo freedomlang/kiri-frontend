@@ -24,6 +24,7 @@ class App extends Component {
           <ParticleBackground />
           <Switch>
             <Route exact path="/" component={ArticleList} />
+            <Route exact path="/category/:category" component={ArticleList} />
             <Route exact path="/article/:id" component={ArticleDetail} />
             <Route exact path="/about" component={About} />
             <Route exact path="/404" component={NotFoundPage} />

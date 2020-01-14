@@ -11,11 +11,24 @@ export default class ArticleList extends Component {
     this.getArticles();
   };
 
+  componentDidUpdate(prevProps) {
+    if (
+      prevProps.match.path !== this.props.match.path ||
+      (this.props.match.params.category && this.props.match.params.category !== prevProps.match.params.category) ||
+      (this.props.match.params.tag && this.props.match.params.tag !== prevProps.match.params.tag)
+    ) return this.getArticles().then(() => {
+      if (this.props.location !== prevProps.location) {
+        window.scrollTo(0, 0)
+      }
+    });
+  }
+
   getArticles = () => {
-    $http.get("articles", {
+    return $http.get("articles", {
       params: {
         pageNum: 1,
-        pageSize: 10
+        pageSize: 10,
+        ...this.props.match.params
       }
     })
     .then(response => {
