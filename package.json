@@ -12,19 +12,19 @@
     "url": "https://github.com/freedomlang/kiri-frontend/issues"
   },
   "dependencies": {
-    "@babel/core": "^7.7.7",
+    "@babel/core": "^7.8.3",
     "@svgr/webpack": "2.4.1",
     "antd": "^3.26.6",
     "axios": "^0.19.1",
     "babel-core": "7.0.0-bridge.0",
     "babel-eslint": "9.0.0",
     "babel-jest": "23.6.0",
-    "babel-loader": "8.0.4",
+    "babel-loader": "8.0.6",
     "babel-preset-react-app": "^7.0.0",
     "bfj": "6.1.1",
     "case-sensitive-paths-webpack-plugin": "^2.2.0",
     "css-loader": "1.0.0",
-    "dayjs": "^1.8.2",
+    "dayjs": "^1.8.19",
     "dotenv": "6.0.0",
     "eslint": "^6.7.2",
     "eslint-config-react-app": "^3.0.6",
@@ -135,12 +135,12 @@
     ]
   },
   "devDependencies": {
-    "babel-plugin-import": "^1.11.0",
+    "babel-plugin-import": "^1.13.0",
     "babel-plugin-named-asset-import": "^0.3.5",
     "chalk": "^3.0.0",
     "dotenv-expand": "^5.1.0",
     "eslint-loader": "^3.0.3",
-    "node-sass": "^4.11.0",
+    "node-sass": "^4.13.0",
     "workbox-webpack-plugin": "^4.3.1"
   },
   "optionalDependencies": {
