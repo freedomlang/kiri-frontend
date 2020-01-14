@@ -1,14 +1,12 @@
 // @flow
 
-import React, { Component } from 'react';
-import {
-  Link
-} from 'react-router-dom';
-import SearchPanel from '../SearchPanel'
-import groupBy from 'lodash.groupby';
-import { $http } from '../../utils';
-import logo from 'images/logo.svg';
-import './style.scss';
+import React, { Component } from "react";
+import { Link } from "react-router-dom";
+import SearchPanel from "../SearchPanel";
+// import groupBy from "lodash.groupby";
+import { $http } from "../../utils";
+import logo from "images/logo.svg";
+import "./style.scss";
 
 class Header extends Component {
   constructor(props) {
@@ -16,63 +14,66 @@ class Header extends Component {
     this.state = {
       showSearch: false,
       notFound: false,
-      searchText: '',
+      searchText: "",
       matchedArticles: []
     };
   }
 
-  _input: ?HTMLInputElement
+  _input: ?HTMLInputElement;
 
-  toggleSearchPanel= () => {
+  toggleSearchPanel = () => {
     this.setState({
       showSearch: !this.state.showSearch
     });
 
-    window.setTimeout(() => this.setState({
-      matchedArticles: [],
-      searchText: ''
-    }), 310);
-  }
+    window.setTimeout(
+      () =>
+        this.setState({
+          matchedArticles: [],
+          searchText: ""
+        }),
+      310
+    );
+  };
 
-  handelInput = (event) => {
+  handelInput = event => {
     return this.setState({
       searchText: event.target.value
     });
-  }
+  };
 
-  searchArticles = (event) => {
-    event.preventDefault();;
+  searchArticles = event => {
+    event.preventDefault();
     const { searchText } = this.state;
-    this.setState({ notFound: false })
-    return $http.get('articles', {
-      params:{
+    this.setState({ notFound: false });
+    return $http.get("articles", {
+      params: {
         pageNum: 1,
         pageSize: 10,
         text: searchText
       }
-    }).then(response => {
+    })
+    .then(response => {
       const { data: matchedArticles } = response;
       this.setState({
         notFound: matchedArticles.length === 0,
         matchedArticles
       });
-
-      console.log(groupBy(matchedArticles, 'category'))
     });
-  }
+  };
 
   handleHotKey = event => {
     if (event.keyCode === 27 && this.state.showSearch) {
       this.toggleSearchPanel();
     }
+  };
+
+  componentDidMount() {
+    window.addEventListener("keydown", this.handleHotKey);
   }
 
-  componentDidMount () {
-    window.addEventListener('keydown', this.handleHotKey);
-  }
-
-  componentWillUnmount () {
-    window.removeEventListener('keydown', this.handleHotKey);
+  componentWillUnmount() {
+    window.removeEventListener("keydown", this.handleHotKey);
   }
 
   render() {
@@ -82,23 +83,37 @@ class Header extends Component {
           <div className="row align-items-center">
             <div className="col-xl-2 text-left">
               <Link to="/">
-                <img alt="logo" src={logo} className="logo"/>
+                <img alt="logo" src={logo} className="logo" />
               </Link>
             </div>
             <div className="col-xl-7">
               <nav>
-                <Link to="/" className="nav-item" style={{textDecoration: 'line-through'}}>留言板</Link>
-                <Link to="/about" className="nav-item" >关于</Link>
+                <Link
+                  to="/"
+                  className="nav-item"
+                  style={{ textDecoration: "line-through" }}
+                >
+                  留言板
+                </Link>
+                <Link to="/about" className="nav-item">
+                  关于
+                </Link>
                 {/* eslint-disable-next-line jsx-a11y/anchor-is-valid, no-script-url */}
-                <button type="button" onClick={this.toggleSearchPanel} className="btn-transparent nav-item">
+                <button
+                  type="button"
+                  onClick={this.toggleSearchPanel}
+                  className="btn-transparent nav-item"
+                >
                   <i className="fa fa-search"></i>
                 </button>
               </nav>
             </div>
-            <div className="col-xl-3"></div>
           </div>
         </div>
-        <SearchPanel toggleSearchPanel={this.toggleSearchPanel} visible={this.state.showSearch}/>
+        <SearchPanel
+          toggleSearchPanel={this.toggleSearchPanel}
+          visible={this.state.showSearch}
+        />
       </header>
     );
   }
