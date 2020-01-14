@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Skeleton } from "antd";
-import { $http, converter, marked } from "../../utils";
+import { $http, marked } from "../../utils";
 import "./style.scss";
 
 export default class ArticleDetail extends Component {
