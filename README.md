@@ -1,5 +1,5 @@
 ### Todos
-- [ ] Add PWA support
+- [x] Add PWA support
 - [ ] Show comments in the page of article
 - [x] Add search page
 - [x] Add particles background
