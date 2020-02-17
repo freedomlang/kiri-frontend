@@ -1,9 +1,9 @@
-import React, { Component } from 'react'
+import React, { memo } from 'react'
 import './style.scss';
 
-export default class About extends Component {
-    render() {
-        return <div className="aboutMe">
+function About () {
+    return (
+        <div className="aboutMe">
             <p>about me</p>
             <div className="row">
                 <div className="col-4">
@@ -19,5 +19,7 @@ export default class About extends Component {
                 </div>
             </div>
         </div>
-    }
+    )
 }
+
+export default memo(About);
