@@ -1,3 +1,15 @@
+@keyframes customizedFadeInUp {
+  0% {
+      opacity: 0;
+      transform: translate3d(0, 50%,0);
+  }
+
+  to {
+      opacity: 1;
+      transform: translate3d(0,-50%,0);
+  }
+}
+
 .aboutMe {
   width: 55%;
   margin: 0 auto;
@@ -23,5 +35,9 @@
 
   .list-group-item {
     border: none;
+  }
+
+  &.fadeInUp {
+    animation-name: customizedFadeInUp;
   }
 }
