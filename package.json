@@ -12,117 +12,42 @@
     "url": "https://github.com/freedomlang/kiri-frontend/issues"
   },
   "dependencies": {
-    "@babel/core": "^7.8.3",
-    "@svgr/webpack": "2.4.1",
+    "@testing-library/jest-dom": "^4.2.4",
+    "@testing-library/react": "^9.3.2",
+    "@testing-library/user-event": "^7.1.2",
+    "react-scripts": "3.4.0",
     "antd": "^3.26.6",
     "axios": "^0.19.1",
-    "babel-core": "7.0.0-bridge.0",
-    "babel-eslint": "9.0.0",
-    "babel-jest": "23.6.0",
-    "babel-loader": "8.0.6",
-    "babel-preset-react-app": "^9.1.1",
-    "bfj": "7.0.2",
-    "case-sensitive-paths-webpack-plugin": "^2.2.0",
-    "css-loader": "3.4.2",
     "dayjs": "^1.8.19",
-    "dotenv": "6.0.0",
-    "eslint": "^6.7.2",
-    "eslint-config-react-app": "^3.0.6",
-    "eslint-plugin-flowtype": "^4.5.2",
-    "eslint-plugin-import": "^2.20.1",
-    "eslint-plugin-jsx-a11y": "6.1.2",
-    "eslint-plugin-react": "^7.18.3",
-    "file-loader": "2.0.0",
-    "fork-ts-checker-webpack-plugin-alt": "0.4.14",
-    "fs-extra": "8.1.0",
-    "html-webpack-plugin": "4.0.0-beta.11",
-    "identity-obj-proxy": "3.0.0",
-    "jest": "23.6.0",
-    "jest-pnp-resolver": "1.0.1",
-    "jest-resolve": "23.6.0",
     "lodash": "^4.17.15",
     "lodash.groupby": "^4.6.0",
     "marked": "^0.8.0",
-    "mini-css-extract-plugin": "0.4.3",
-    "optimize-css-assets-webpack-plugin": "5.0.1",
-    "pnp-webpack-plugin": "^1.5.0",
-    "postcss-flexbugs-fixes": "4.1.0",
-    "postcss-loader": "3.0.0",
-    "postcss-preset-env": "6.7.0",
-    "postcss-safe-parser": "4.0.1",
     "react": "^16.12.0",
-    "react-app-polyfill": "^1.0.5",
-    "react-dev-utils": "^7.0.1",
     "react-dom": "^16.12.0",
-    "react-router-dom": "^5.1.2",
-    "resolve": "1.8.1",
-    "sass-loader": "^8.0.2",
-    "style-loader": "0.23.0",
-    "terser-webpack-plugin": "1.1.0",
-    "url-loader": "1.1.1",
-    "webpack": "^4.41.4",
-    "webpack-dev-server": "3.10.1",
-    "webpack-manifest-plugin": "2.2.0"
+    "react-router-dom": "^5.1.2"
   },
   "scripts": {
-    "start": "node scripts/start.js",
-    "build": "node scripts/build.js",
-    "test": "node scripts/test.js"
+    "start": "react-app-rewired start",
+    "build": "react-app-rewired build",
+    "test": "react-app-rewired test",
+    "eject": "react-scripts eject"
   },
   "eslintConfig": {
     "extends": "react-app"
   },
-  "browserslist": [
-    ">0.2%",
-    "not dead",
-    "not ie <= 11",
-    "not op_mini all"
-  ],
-  "jest": {
-    "collectCoverageFrom": [
-      "src/**/*.{js,jsx,ts,tsx}",
-      "!src/**/*.d.ts"
+  "browserslist": {
+    "production": [
+      ">0.2%",
+      "not dead",
+      "not op_mini all"
     ],
-    "resolver": "jest-pnp-resolver",
-    "setupFiles": [
-      "react-app-polyfill/jsdom"
-    ],
-    "testMatch": [
-      "<rootDir>/src/**/__tests__/**/*.{js,jsx,ts,tsx}",
-      "<rootDir>/src/**/?(*.)(spec|test).{js,jsx,ts,tsx}"
-    ],
-    "testEnvironment": "jsdom",
-    "testURL": "http://localhost",
-    "transform": {
-      "^.+\\.(js|jsx|ts|tsx)$": "<rootDir>/node_modules/babel-jest",
-      "^.+\\.css$": "<rootDir>/config/jest/cssTransform.js",
-      "^(?!.*\\.(js|jsx|ts|tsx|css|json)$)": "<rootDir>/config/jest/fileTransform.js"
-    },
-    "transformIgnorePatterns": [
-      "[/\\\\]node_modules[/\\\\].+\\.(js|jsx|ts|tsx)$",
-      "^.+\\.module\\.(css|sass|scss)$"
-    ],
-    "moduleNameMapper": {
-      "^react-native$": "react-native-web",
-      "^.+\\.module\\.(css|sass|scss)$": "identity-obj-proxy"
-    },
-    "moduleFileExtensions": [
-      "web.js",
-      "js",
-      "web.ts",
-      "ts",
-      "web.tsx",
-      "tsx",
-      "json",
-      "web.jsx",
-      "jsx",
-      "node"
+    "development": [
+      "last 1 chrome version",
+      "last 1 firefox version",
+      "last 1 safari version"
     ]
   },
   "babel": {
-    "presets": [
-      "react-app"
-    ],
     "plugins": [
       [
         "import",
@@ -136,12 +61,9 @@
   },
   "devDependencies": {
     "babel-plugin-import": "^1.13.0",
-    "babel-plugin-named-asset-import": "^0.3.5",
-    "chalk": "^3.0.0",
-    "dotenv-expand": "^5.1.0",
-    "eslint-loader": "^3.0.3",
-    "node-sass": "^4.13.0",
-    "workbox-webpack-plugin": "^4.3.1"
+    "customize-cra": "^0.9.1",
+    "node-sass": "^4.13.1",
+    "react-app-rewired": "^2.1.5"
   },
   "optionalDependencies": {
     "fsevents": "^2.0.7"
