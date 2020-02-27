@@ -1,19 +1,20 @@
 const path = require('path');
+const {InjectManifest} = require('workbox-webpack-plugin');
 const {
   override,
   fixBabelImports,
-  adjustWorkbox,
   addWebpackAlias
 } = require("customize-cra");
 
 module.exports = override(
-  adjustWorkbox(wb =>
-    Object.assign(wb, {
-      skipWaiting: true,
-      navigateFallbackBlacklist: [new RegExp('^/dieci')]
-      // navigateFallbackDenylist: [new RegExp('^/dieci')]
-    })
-  ),
+  function (config) {
+    config.plugins = config.plugins.filter(plugin => plugin.constructor.name !== 'GenerateSW');
+    config.plugins = config.plugins.concat([new InjectManifest({
+      swSrc: './src/sw.js',  
+      swDest: 'service-worker.js'
+    })])
+    return config;
+  },
   addWebpackAlias({
     images: path.resolve(__dirname, "src/assets/images/"),
     '@ant-design/icons/lib/dist$': path.join(__dirname, 'scripts/icons.js')
