@@ -10,6 +10,7 @@ module.exports = override(
   function (config) {
     config.plugins = config.plugins.filter(plugin => plugin.constructor.name !== 'GenerateSW');
     config.plugins = config.plugins.concat([new InjectManifest({
+      importWorkboxFrom: 'disabled',
       swSrc: './src/sw.js',  
       swDest: 'service-worker.js'
     })])
