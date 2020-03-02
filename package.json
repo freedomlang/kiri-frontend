@@ -16,7 +16,7 @@
     "@testing-library/react": "^9.3.2",
     "@testing-library/user-event": "^7.1.2",
     "react-scripts": "3.4.0",
-    "antd": "^3.26.6",
+    "antd": "^4.0.0",
     "axios": "^0.19.1",
     "dayjs": "^1.8.19",
     "lodash": "^4.17.15",
