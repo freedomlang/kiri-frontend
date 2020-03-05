@@ -5,26 +5,26 @@ import marked from 'marked';
 var $http = axios.create({
   baseURL:
   window.location.hostname === "localhost" ? "http://localhost:9999/api/" : "/api/", //  基础Api接口地址
-  timeout: 19000
+  timeout: 5000
 });
 
 $http.interceptors.response.use(
-  function(response) {
-    if (response.data.code === "0000") {
-      return response.data.result;
+  function({ data: { code, result, message = 'errors' } }) {
+    if (code === "0000") {
+      return result;
     } else {
-      message.error(response.data.message || "errors");
-      return Promise.reject(response.data.message);
+      message.error(message || "errors");
+      return Promise.reject(message);
     }
   },
-  function(error) {
+  function({ config: { baseURL, url }, code }) {
     var errorText;
     // Do something with response error
-    if (error.code === "ECONNABORTED") {
+    if (code === "ECONNABORTED") {
       errorText =
-        "接口 " +
-        error.config.url.replace(error.config.baseURL, "") +
-        " 请求超时，请稍后再试！";
+        "接口" +
+        (process.env.NODE_ENV === 'development' ? `   ${baseURL + url} ` : '') +
+        "请求超时，请稍后再试！";
       message.error(errorText);
     }
     return Promise.reject(errorText);
