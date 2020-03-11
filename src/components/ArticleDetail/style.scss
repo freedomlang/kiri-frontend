@@ -94,7 +94,7 @@ pre {
 }
 
 pre::before {
-  content: attr(alt);
+  content: attr(data-code-lang);
   display: block;
   padding: 0.5em 4.5em;
   line-height: 1;

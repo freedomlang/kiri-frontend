@@ -47,7 +47,7 @@ markdownRender.link = function (href, title, text) {
 markdownRender.code = function (code, lang, escape) {
   const html = oldRender4code.call(this, code, lang, escape);
   const regex = /<pre><code>/;
-  return regex.test(html) ? html.replace(regex, '<pre><code class="hljs">') : html;
+  return lang ? `<pre data-code-lang="${lang}">` + html.slice(5) : html.replace(regex, `<pre><code class="hljs">`);
 }
 
 markdownRender.image = function (href, title, text) {
