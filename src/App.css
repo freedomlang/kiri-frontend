@@ -70,3 +70,19 @@
 .ant-message .anticon {
   vertical-align: text-top;
 }
+
+/*
+  From https://developer.mozilla.org/zh-CN/docs/Web/Guide/CSS/Counters
+  Change nested list style to x.x.
+ */
+ol {
+  list-style-type: none;
+  counter-reset: section;
+}
+
+ol li:before {
+  counter-increment: section;
+  content: counters(section, ".") ".";
+  display: inline-block;
+  margin-right: 0.5em;
+}
