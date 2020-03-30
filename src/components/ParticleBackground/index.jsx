@@ -98,8 +98,8 @@ export default class ParticleBackground extends Component {
       }, () => {
         if (this.state.showLabel) return;
         const labelWidth = labelEl.offsetWidth;
-        if (labelWidth + activeX > this.canvasContext.width) {
-          activeX -= labelWidth + 10
+        if (labelWidth + activeX > this.width) {
+          activeX -= labelWidth + 30
         }
         return this.setState({
           labelPostion: {
@@ -210,17 +210,10 @@ export default class ParticleBackground extends Component {
     }
 
     componentDidMount() {
-      window.requestAnimationFrame = window.requestAnimationFrame || window.webkitRequestAnimationFrame || window.mozRequestAnimationFrame || function(callback) {
-        return window.setTimeout(callback, 1000 / 60)
-      };
-
       const canvasEl = this.canvasRef.current;
       this.canvasContext = canvasEl.getContext("2d");
-      canvasEl.width = window.innerWidth;
-      canvasEl.height = window.innerHeight;
-      this.width = canvasEl.width;
-      this.height = canvasEl.height;
-      // debugger
+      this.width = canvasEl.width = window.innerWidth;
+      this.height = canvasEl.height = window.innerHeight;
       this.getMotto();
     }
 
