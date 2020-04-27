@@ -63,6 +63,6 @@
     "react-app-rewired": "^2.1.5"
   },
   "optionalDependencies": {
-    "fsevents": "^2.0.7"
+    "fsevents": "^2.1.3"
   }
 }
