@@ -12,7 +12,7 @@
     "url": "https://github.com/freedomlang/kiri-frontend/issues"
   },
   "dependencies": {
-    "react-scripts": "3.4.1",
+    "react-scripts": "4.0.3",
     "antd": "^4.2.4",
     "axios": "^0.19.2",
     "dayjs": "^1.8.27",
